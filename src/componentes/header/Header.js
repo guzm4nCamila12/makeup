@@ -6,6 +6,7 @@ import AddLinkIcon from '@mui/icons-material/AddLink';
 import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LoginIcon from '@mui/icons-material/Login';
+import { Link } from "react-router-dom";
 
 function Header() {
     return (
@@ -31,10 +32,12 @@ function Header() {
                                 <AddIcCallIcon/>
                                 <a className="nav-link"> Contacto </a>
                             </li>
+                            <Link to='/registro'>
                             <li className="nav-item">
                                 <AccountBoxIcon/>
                                 <a className="nav-link"> Registrarse </a>
                             </li>
+                            </Link>
                             <li className="nav-item">
                                 <LoginIcon/>
                                 <a className="nav-link"> Iniciar sesión </a>
@@ -42,7 +45,7 @@ function Header() {
                         </ul>
                         <form className="d-flex" role="search">
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="submit">Search</button>
+                            <button type="button" class="btn btn-outline-info">Search</button>
                         </form>
                     </div>
                 </div>

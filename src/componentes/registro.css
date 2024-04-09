@@ -1,0 +1,27 @@
+.form1{
+    justify-content: space-around;
+    padding: 5px 20px 5px 20px;
+    width: 610px;
+    background-color: rgb(204, 155, 204);
+    border-radius: 20px;
+}
+.form1 button{
+    display: flex;
+    margin: auto;
+    border-radius: 5px;
+    font-size: 18px;
+}
+.formulario{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+    padding-top: 50px;
+    padding-left: 300px;
+    padding-right: 300px;
+    padding-bottom: 50px;
+    font-size:30px ;
+}
+.form-group2{
+    padding: 10px;
+}
