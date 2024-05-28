@@ -20,7 +20,7 @@ export default function Registro() {
     const [passwordErrorRepeat, setPasswordErrorRepeat] = useState(false)
     const [passComparacion, setPassComparacion] = useState(false)
 
-    const form = useRef()
+    
 
     function idError() { //Esta función setea a false la variable "identificacionError" para que el mensaje de error desaparezca cuando hacen click en el campo de la identificación.
         setIdentificacionError(false)
@@ -53,19 +53,31 @@ export default function Registro() {
         setPasswordErrorRepeat(false)
     }
 
-    //   const handleChange = (e) => { //cuando se cambie de Input entonces se guarda la información en la variables.
+    const [values, setValues] = useState({
+        identificacion: "",
+        nombres: "",
+        apellidos: "",
+        email: "",
+        direccion: "",
+        telefono: "",
+        fechaNacimento: "",
+        password: "",
+        passRepeat: "",
+        rol: "Usuario",
+    });
+    const handleChange = (e) => {
 
-    //     const { name, value } = e.target
-    //     const newValues = {
-    //         ...values,
-    //         [name]: value,
-    //     }
-    //     setValues(newValues)
-    // }
+        const { name, value } = e.target
+        const newValues = {
+            ...values,
+            [name]: value,
+        }
+        setValues(newValues)
+    }
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        let validPassword = /^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,}$/  //Expersión regular para: Mínimo 8 caracteres de longitud. Almenos una letra mayúscula. Almenos una letra minúscula. Almenos un número. Almenos un caracter especial. https://uibakery.io/regex-library/password
+        let validPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/; //Expersión regular para: Mínimo 8 caracteres de longitud. Almenos una letra mayúscula. Almenos una letra minúscula. Almenos un número. Almenos un caracter especial. https://uibakery.io/regex-library/password
         let validEmail = /^\w+([.-_+]?\w+)@\w+([.-]?\w+)(\.\w{2,10})+$/; //Expresión regular para validar email, es decir, que el email ingresado tenga el formato correcto de una dirección de correo electrónico
 
         if (values.identificacion.length < 5 || values.identificacion.length > 10 || values.identificacion.length === 0) {
@@ -127,7 +139,7 @@ export default function Registro() {
                         title: "Usuario creado con éxito",
                         icon: "success"
                     })
-                    form.current.reset()
+                    
                     window.location.hash = '/login'
 
                 }
@@ -145,36 +157,13 @@ export default function Registro() {
                 Swal.fire({
                     title: "No fue posible finalizar el proceso de registro por un error interno del servidor ",
                     icon: "error"
-                })
-            })
+                });
+            });
     }
-
-
-    const [values, setValues] = useState({
-        identificacion: "",
-        nombres: "",
-        apellidos: "",
-        email: "",
-        direccion: "",
-        telefono: "",
-        fechaNacimento: "",
-        password: "",
-        passRepeat: "",
-    });
-    const handleChange = (e) => {
-
-        const { name, value } = e.target
-        const newValues = {
-            ...values,
-            [name]: value,
-        }
-        setValues(newValues)
-    }
-
     return (
 
         <div className='formulario'>
-            <form className='form1' onSubmit={handleSubmit} ref={form}>
+            <form className='form1' onSubmit={handleSubmit} >
                 <div class="form-group">
                     <label for="numeroId">Documento</label>
                     <input type="number" class="form-control" id="inputNumero" name='identificacion' onChange={handleChange} onClick={idError} placeholder="Debe estar entre 5 y 10 dígitos" />
@@ -212,15 +201,15 @@ export default function Registro() {
                 </div>
                 <div class="form-group">
                     <label for="password">Contraseña</label>
-                    <input type="password" class="form-control" id="inputPassword" name='password' onChange={handleChange} onClick={passError} placeholder="8 caracteres de longitud" />
-                    {passwordError ? <p>Debe ser de 8 caracteres de longitud</p> : ""}
+                    <input type="password" class="form-control" id="inputPassword" name='password' onChange={handleChange} onClick={passError} placeholder="Debe tener 8 caracteres" />
+                    {passwordError ? <p>Debe ser de 8 caracteres, 1 mayuscula, 1 minuscula y un numero</p> : ""}
                 </div>
                 <div class="form-group2">
                     <label for="confirmar">Confirmar Contraseña</label>
                     <input type="password" class="form-control" id="inputConfirmar" name='passRepeat' onChange={handleChange} onClick={passRepeat} placeholder="Confirmar" />
                     {passwordErrorRepeat ? <p>Debe ser de minimo tres caracteres</p> : ""}
                 </div>
-                <button type="button" class="btn btn-outline-info">Registrarse</button>
+                <button type="submit" class="btn btn-outline-dark">Registrarse</button>
             </form>
         </div>
     )

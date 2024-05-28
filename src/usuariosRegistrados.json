@@ -1,3 +1,71 @@
 [
-    
+    {
+        "id": 1,
+        "identificacion": "656546",
+        "nombres": "camilo",
+        "apellidos": "guapacha",
+        "email": "camilo@gmail.com",
+        "direccion": "calle 15 # 16-09",
+        "telefono": "3106326454",
+        "fechaNacimiento": "2006-01-23",
+        "password": "Cami1234",
+        "estado": "activo",
+        "fechaCreacion": "2024-04-29T21:34:17.072Z"
+    },
+    {
+        "id": 2,
+        "identificacion": "1054860600",
+        "nombres": "Camila",
+        "apellidos": "Guzman",
+        "email": "camila12@gmail.com",
+        "direccion": "calle 16 # 18-58",
+        "telefono": "3106326454",
+        "fechaNacimiento": "2006-01-12",
+        "password": "Camila12",
+        "estado": "activo",
+        "rol": "Usuario",
+        "fechaCreacion": "2024-04-29T21:35:53.413Z"
+    },
+    {
+        "id": 3,
+        "identificacion": "123546",
+        "nombres": "Juan",
+        "apellidos": "Guzman",
+        "email": "juan@gmail.com",
+        "direccion": "calle 14 # 18-57",
+        "telefono": "3214856987",
+        "fechaNacimiento": "2005-01-12",
+        "password": "Juan1234",
+        "estado": "activo",
+        "rol": "Usuario",
+        "fechaCreacion": "2024-04-30T21:24:31.446Z"
+    },
+    {
+        "id": 4,
+        "identificacion": "12563",
+        "nombres": "Daniela",
+        "apellidos": "Leona",
+        "email": "dani@gmail.com",
+        "direccion": "calle 14 # 15-78",
+        "telefono": "3214523698",
+        "fechaNacimiento": "2006-02-23",
+        "password": "Dani1234",
+        "estado": "activo",
+        "rol": "Usuario",
+        "fechaCreacion": "2024-04-30T21:27:08.669Z"
+    },
+    {
+        "id": 5,
+        "identificacion": "120546",
+        "nombres": "Ximena",
+        "apellidos": "Jaramillo",
+        "email": "ximena@gmail.com",
+        "direccion": "calle 14 # 14-67",
+        "telefono": "3214569874",
+        "fechaNacimiento": "2006-01-28",
+        "password": "Xime1234",
+        "estado": "activo",
+        "rol": "Usuario",
+        "fechaCreacion": "2024-04-30T21:31:54.389Z"
+    }
 ]

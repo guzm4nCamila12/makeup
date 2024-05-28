@@ -38,15 +38,13 @@ function Header() {
                                 <a className="nav-link"> Registrarse </a>
                             </li>
                             </Link>
+                            <Link to='/login'>
                             <li className="nav-item">
                                 <LoginIcon/>
                                 <a className="nav-link"> Iniciar sesión </a>
                             </li>
+                            </Link>
                         </ul>
-                        <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button type="button" class="btn btn-outline-info">Search</button>
-                        </form>
                     </div>
                 </div>
             </nav>
