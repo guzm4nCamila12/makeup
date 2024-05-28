@@ -7,6 +7,7 @@ import "./registro.css"
 
 
 export default function Registro() {
+    let URL = process.env.REACT_APP_ENVIROMENT
 
     const [identificacionError, setIdentificacionError] = useState(false)
     const [nomError, setNomError] = useState(false)
@@ -127,10 +128,11 @@ export default function Registro() {
         }
 
 
-        fetch('http://localhost:3001/registro-usuario', {
+
+        console.log("--->>", URL)
+        fetch(`${URL}/registro-usuario`, {
             method: 'POST',
             headers: { "Content-Type": "application/json", 'Accept': 'application/json' },
-            body: JSON.stringify(values)
         })
             .then(response => {
                 if (response.status === 200) {
