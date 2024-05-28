@@ -9,8 +9,21 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/', (req, res) => {
-    res.send("saludando desde el backend")
-})
+    //res.send("saludando desde el backend")
+    let config = {
+        method: "GET",
+        //maxBodyLength: Infinity,
+        url: "https://api.jsonbin.io/v3/b/66562a3ce41b4d34e4faf159",
+        headers: {
+            'Content-Type': 'application/json',
+            "X-Master-Key": "$2a$10$Ehv3j05vWa4FFLt1IKyqgOfHVRMIDEvmiMTEiz9VMrpBqOZdLGG3q"
+        }
+    };
+    axios(config)
+    .then(result => {
+        res.send(result.data.record)
+    })
+});
 
 const user = require("./controlador/userControlador");
 app.use("/registro-usuario", user.register);
