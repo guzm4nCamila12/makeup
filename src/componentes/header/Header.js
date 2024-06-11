@@ -7,8 +7,11 @@ import AddIcCallIcon from '@mui/icons-material/AddIcCall';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LoginIcon from '@mui/icons-material/Login';
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { dataContext } from "../context/DataContext";
 
 function Header() {
+    const {makeupCarrito, setMakeupCarrito} = useContext(dataContext)
     return (
         <div className="contenedor">
             <nav className="navbar navbar-expand-lg">
@@ -43,6 +46,9 @@ function Header() {
                                 <LoginIcon/>
                                 <a className="nav-link"> Iniciar sesión </a>
                             </li>
+                            </Link>
+                            <Link to="/carrito">
+                                <h2 className="carrito"> 🛒{makeupCarrito.length}</h2>
                             </Link>
                         </ul>
                     </div>

@@ -15,69 +15,89 @@ export default [
         tittle: "Base",
         description: "The ordinary",
         image: producto1,
-        precio: "$50.000"
+        precio: 50000,
+        precioCarrito: 50000,
+        cantidad: 1
     },
     {
         id: 2,
         tittle: "Corrector",
         description: "Rare beauty",
         image: producto2,
-        precio: "$30.000"
+        precio: 30000,
+        precioCarrito: 30000,
+        cantidad: 1
     },
     {
         id: 3,
         tittle: "Rubor en crema",
         description: "Sheglam",
         image: producto3,
-        precio: "$35.000"
+        precio: 35000,
+        precioCarrito: 35000,
+        cantidad: 1
     },
     {
         id: 4,
         tittle: "Contorno en crema",
         description: "Sheglam",
         image: producto4,
-        precio: "$35.000"
+        precio: 35000,
+        precioCarrito: 35000,
+        cantidad: 1
     },
     {
         id: 5,
         tittle: "Polvo suelto",
         description: "NYX",
         image: producto5,
-        precio: "$45.000"
+        precio: 45000,
+        precioCarrito: 45000,
+        cantidad: 1
     },
     {
         id: 6,
         tittle: "Gel para cejas",
         description: "Ame",
         image: producto6,
-        precio: "$20.000"
+        precio: 20000,
+        precioCarrito: 20000,
+        cantidad: 1
     },
     {
         id: 7,
         tittle: "Paleta de sombras",
         description: "Atenea",
         image: producto7,
-        precio: "$75.000"
+        precio: 75000,
+        precioCarrito: 75000,
+        cantidad: 1
     },
     {
         id: 8,
         tittle: "Delineadores",
         description: "Highprecision",
         image: producto8,
-        precio: "$20.000"
+        precio: 20000,
+        precioCarrito: 20000,
+        cantidad: 1
     },
     {
         id: 9,
         tittle: "Pestañinas",
         description: "Vogue",
         image: producto9,
-        precio: "$15.000"
+        precio: 15000,
+        precioCarrito: 15000,
+        cantidad: 1
     },
     {
         id: 10,
         tittle: "Labiales",
         description: "Anika",
         image: producto10,
-        precio: "$30.000"
+        precio: 30000,
+        precioCarrito: 30000,
+        cantidad: 1
     },
 ]

@@ -7,7 +7,7 @@ import "./registro.css"
 
 
 export default function Registro() {
-    let URL = process.env.REACT_APP_ENVIROMENT
+    let URL = process.env.REACT_APP_ENVIRONMENT
 
     const [identificacionError, setIdentificacionError] = useState(false)
     const [nomError, setNomError] = useState(false)
