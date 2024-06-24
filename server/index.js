@@ -34,3 +34,14 @@ const PORT = 3001
     app.listen(PORT,()=>{
         console.log("servidor corriendo en el puerto",PORT) 
 })
+
+const conexion = require('./configDB/configDB')
+app.get("/todos-los-usuarios", (req, res) => {
+    conexion.connect(function (err) {
+        if(err) throw err;
+        conexion.query("SELECT * FROM sql10715869.usuarios", function (err, result, fields){
+            if(err) throw err;
+            res.send(result)
+        })
+    })
+})
