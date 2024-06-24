@@ -22,7 +22,7 @@ function CarritoElements() {
     const cantidad = () => {
         setMakeupCarrito((actualesProductos) => {
             return actualesProductos.map((producto) => {
-                const valor = document.getElementById(producto.id)?.value || producto.cantidad;
+                const valor = document.getElementById(producto.id);
                 return { ...producto, precioCarrito: producto.precio * valor.value, cantidad: valor.value }
             })
         })

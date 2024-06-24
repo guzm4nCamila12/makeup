@@ -47,8 +47,8 @@ function CarritoContents() {
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col-10">
                         <div className="d-flex justify-content-between align-items-center mb-4">
-                            <h3 className="fw-normal mb-0 text-black">Shopping Cart</h3>
-                            <button type="button" class="btn btn-warning btn-lg" onClick={vaciarCarrito}>Vaciar carrito  <i class="bi bi-cart-x"></i></button>
+                            <h3 className="fw-normal mb-0 text-black">Carrito de compras</h3>
+                            <button type="button" class="btn btn-outline-info" onClick={vaciarCarrito}>Vaciar carrito  <i class="bi bi-cart-x"></i></button>
                             <div>
                                 <Link to='/' ><h4 className="mb-0"><span className="text-muted">Seguir comprando</span></h4></Link>
                             </div>
@@ -77,7 +77,7 @@ function CarritoContents() {
                     <div className="row d-flex justify-content-center align-items-center h-100">
                         <div className="col-10">
                             <div className="row d-flex justify-content-between align-items-center">
-                                <button type="button" className="btn btn-warning btn-block btn-lg ">Proceed to Pay</button>
+                                <button type="button" className="btn btn-outline-info">Proceed to Pay</button>
                             </div>
                         </div>
                     </div>

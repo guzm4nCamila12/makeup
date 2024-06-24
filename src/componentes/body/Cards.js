@@ -6,7 +6,7 @@ function Cards(props) {
 
     function addToCard(){
         setMakeupCarrito((currentMakeup) => {
-            const isItemFound = currentMakeup.find((item) => item.id === props.item.id);
+            const isItemFound = currentMakeup.find((item) => item.id === props.items.id);
             console.log("IsItemFound--->>", isItemFound)
             if(isItemFound){
                 return currentMakeup.map((item) => {
@@ -17,7 +17,7 @@ function Cards(props) {
                     }
                 })
             } else {
-                return [...currentMakeup, props.item]
+                return [...currentMakeup, props.items]
             }
         })
     }
