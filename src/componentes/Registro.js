@@ -129,10 +129,11 @@ export default function Registro() {
 
 
 
-        console.log("--->>", URL)
+        console.log("URL--->>", URL)
         fetch(`${URL}/registro-usuario`, {
             method: 'POST',
             headers: { "Content-Type": "application/json", 'Accept': 'application/json' },
+            body: JSON.stringify(values),
         })
             .then(response => {
                 if (response.status === 200) {
