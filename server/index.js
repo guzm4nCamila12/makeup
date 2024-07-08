@@ -26,9 +26,7 @@ app.get('/', (req, res) => {
     })
 });
 
-//const user = require("./controlador/userControlador");
 const user = require("./controlador/userControlador");
-app.use("/registro-usuario", user.registerBD);
 //app.use("/login", user.login);
 
 const PORT = 3001
@@ -40,7 +38,7 @@ const conexion = require('./configDB/configDB')
 app.get("/todos-los-usuarios", (req, res) => {
     conexion.connect(function (err) {
         if(err) throw err;
-        conexion.query("SELECT * FROM sql10715869.usuarios", function (err, result, fields){
+        conexion.query("SELECT * FROM ecommerce.usuarios", function (err, result, fields){
             if(err) throw err;
             res.send(result)
         })

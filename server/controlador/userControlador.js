@@ -102,8 +102,6 @@ const controller = {
                     direccion: req.body.direccion,
                     telefono: req.body.telefono,
                     fechaNacimiento: req.body.fechaNacimiento,
-                    deptoResidencia: req.body.deptoResidencia,
-                    municipioResidencia: req.body.municipioResidencia,
                     password: req.body.password,
                     estado: "activo",
                     rol: "Usuario",
@@ -154,7 +152,7 @@ const controller = {
     registerBD: function (req, res){
         const {identificacion, nombres, apellidos, email, direccion, telefono, fechaNacimiento, password} = JSON.parse(JSON.stringify(req.body))
         try {
-            const sql = "INSERT INTO sql10715869.usuarios (identificacion,nombres,apellidos,email,direccion,telefono,fechaNacimiento,password,fechaCreacion) VALUES (?,?,?,?,?,?,?,?,?)";
+            const sql = "INSERT INTO ecommerce.usuarios (identificacion,nombres,apellidos,email,direccion,telefono,fechaNacimiento,password,fechaCreacion) VALUES (?,?,?,?,?,?,?,?,?)";
             connection.execute(sql, [identificacion, nombres, apellidos, email, direccion, telefono, fechaNacimiento, password, new Date()])
             res.status(200).send("Registro exitoso")
         } catch (error) {
