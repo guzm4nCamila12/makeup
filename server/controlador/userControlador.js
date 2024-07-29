@@ -1,5 +1,5 @@
 
-/*const fs = require('fs').promises;
+const fs = require('fs').promises;
 const { register } = require('module');
 const path = require('path');
 
@@ -22,6 +22,7 @@ const controlador = {
                 direccion: req.body.direccion,
                 telefono: req.body.telefono,
                 fechaNacimiento: req.body.fechaNacimiento,
+                image:req. file. filename,
                 password: req.body.password,
                 estado: "activo",
                 rol: "Usuario",
@@ -69,97 +70,98 @@ const controlador = {
             res.status(500).send("Error interno del servidor");
         }
     },
-}*/
-const express = require('express')
-const app = express()
-const axios = require('axios')
-const cors = require('cors')
-app.use(cors())
-const connection = require('../configDB/configDB'); // Ajusta la ruta según sea necesario
-
-
-const controller = {
-    register: function (req, res) {
-        let config = {
-            method: "GET",
-            maxBodyLength: Infinity,
-            url: 'https://api.jsonbin.io/v3/b/66562a3ce41b4d34e4faf159',
-            headers: {
-                'Content-Type': 'application/json',
-                "X-Master-Key": "$2a$10$Ehv3j05vWa4FFLt1IKyqgOfHVRMIDEvmiMTEiz9VMrpBqOZdLGG3q"
-            }
-        };
-
-        axios(config)
-            .then(result => {
-                let id = result.data.record.length + 1
-                const usuarioNuevo = {
-                    id: id,
-                    identificacion: req.body.identificacion,
-                    nombres: req.body.nombres,
-                    apellidos: req.body.apellidos,
-                    email: req.body.email,
-                    direccion: req.body.direccion,
-                    telefono: req.body.telefono,
-                    fechaNacimiento: req.body.fechaNacimiento,
-                    password: req.body.password,
-                    estado: "activo",
-                    rol: "Usuario",
-                    fecha_creación: new Date(),
-                };
-                if (result.data.record.length === 0) {
-                    result.data.record.push(usuarioNuevo)
-                }
-                else {
-                    for (x of result.data.record) {
-                        if (x.email === req.body.email) {
-                            res.status(400).send("Usuario ya existe en la Base de Datos")
-                            return
-                        }
-                    }
-                    result.data.record.push(usuarioNuevo)
-                }
-
-                fetch("https://api.jsonbin.io/v3/b/66562a3ce41b4d34e4faf159", {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "Application/json",
-                        "X-Master-Key": "$2a$10$Ehv3j05vWa4FFLt1IKyqgOfHVRMIDEvmiMTEiz9VMrpBqOZdLGG3q"
-                    },
-                    body: JSON.stringify(result.data.record),
-                })
-                    // let configPut = {
-                    //   method: "PUT",
-                    //   url: "https://json.extendsclass.com/bin/cd70c6c83bc6",
-                    //   headers: { "Content-Type": "Application/json", "Security-key": "12345678" },
-                    //   body: JSON.stringify(result.data),
-                    // }
-                    // axios(configPut)
-                    .then(response => {
-                        if (response.status === 200) {
-                            res.status(200).send('ok')
-                            return
-                        }
-                        else {
-                            res.status(400).send("No Ok")
-                            return
-                        }
-                    })
-            })
-
-    },
-
-    registerBD: function (req, res){
-        const {identificacion, nombres, apellidos, email, direccion, telefono, fechaNacimiento, password} = JSON.parse(JSON.stringify(req.body))
-        try {
-            const sql = "INSERT INTO ecommerce.usuarios (identificacion,nombres,apellidos,email,direccion,telefono,fechaNacimiento,password,fechaCreacion) VALUES (?,?,?,?,?,?,?,?,?)";
-            connection.execute(sql, [identificacion, nombres, apellidos, email, direccion, telefono, fechaNacimiento, password, new Date()])
-            res.status(200).send("Registro exitoso")
-        } catch (error) {
-            console.error("Error al insertar en la Base de Datos", error)
-            res.status(500).send("Error al insertar registro en la Base de Datos")
-        }
-    }
 }
+// const express = require('express')
+// const app = express()
+// const axios = require('axios')
+// const cors = require('cors')
+// app.use(cors())
+// const connection = require('../configDB/configDB'); // Ajusta la ruta según sea necesario
 
-module.exports = controller;
+
+// const controller = {
+//     register: function (req, res) {
+//         let config = {
+//             method: "GET",
+//             maxBodyLength: Infinity,
+//             url: 'https://api.jsonbin.io/v3/b/66562a3ce41b4d34e4faf159',
+//             headers: {
+//                 'Content-Type': 'application/json',
+//                 "X-Master-Key": "$2a$10$Ehv3j05vWa4FFLt1IKyqgOfHVRMIDEvmiMTEiz9VMrpBqOZdLGG3q"
+//             }
+//         };
+
+//         axios(config)
+//             .then(result => {
+//                 let id = result.data.record.length + 1
+//                 const usuarioNuevo = {
+//                     id: id,
+//                     identificacion: req.body.identificacion,
+//                     nombres: req.body.nombres,
+//                     apellidos: req.body.apellidos,
+//                     email: req.body.email,
+//                     direccion: req.body.direccion,
+//                     telefono: req.body.telefono,
+//                     fechaNacimiento: req.body.fechaNacimiento,
+//                     password: req.body.password,
+//                     estado: "activo",
+//                     rol: "Usuario",
+//                     fecha_creación: new Date(),
+//                 };
+//                 if (result.data.record.length === 0) {
+//                     result.data.record.push(usuarioNuevo)
+//                 }
+//                 else {
+//                     for (x of result.data.record) {
+//                         if (x.email === req.body.email) {
+//                             res.status(400).send("Usuario ya existe en la Base de Datos")
+//                             return
+//                         }
+//                     }
+//                     result.data.record.push(usuarioNuevo)
+//                 }
+
+//                 fetch("https://api.jsonbin.io/v3/b/66562a3ce41b4d34e4faf159", {
+//                     method: "PUT",
+//                     headers: {
+//                         "Content-Type": "Application/json",
+//                         "X-Master-Key": "$2a$10$Ehv3j05vWa4FFLt1IKyqgOfHVRMIDEvmiMTEiz9VMrpBqOZdLGG3q"
+//                     },
+//                     body: JSON.stringify(result.data.record),
+//                 })
+//                     // let configPut = {
+//                     //   method: "PUT",
+//                     //   url: "https://json.extendsclass.com/bin/cd70c6c83bc6",
+//                     //   headers: { "Content-Type": "Application/json", "Security-key": "12345678" },
+//                     //   body: JSON.stringify(result.data),
+//                     // }
+//                     // axios(configPut)
+//                     .then(response => {
+//                         if (response.status === 200) {
+//                             res.status(200).send('ok')
+//                             return
+//                         }
+//                         else {
+//                             res.status(400).send("No Ok")
+//                             return
+//                         }
+//                     })
+//             })
+
+//     },
+
+//     registerBD: function (req, res){
+//         const {identificacion, nombres, apellidos, email, direccion, telefono, fechaNacimiento, password} = JSON.parse(JSON.stringify(req.body))
+//         try {
+//             const sql = "INSERT INTO ecommerce.usuarios (identificacion,nombres,apellidos,email,direccion,telefono,fechaNacimiento,password,fechaCreacion) VALUES (?,?,?,?,?,?,?,?,?)";
+//             connection.execute(sql, [identificacion, nombres, apellidos, email, direccion, telefono, fechaNacimiento, password, new Date()])
+//             res.status(200).send("Registro exitoso")
+//             console.log("Correcto.")
+//         } catch (error) {
+//             console.error("Error al insertar en la Base de Datos", +error)
+//             res.status(500).send("Error al insertar registro en la Base de Datos")
+//         }
+//     }
+// }
+
+module.exports = controlador;

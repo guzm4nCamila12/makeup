@@ -20,6 +20,8 @@ export default function Registro() {
     const [passwordError, setPasswordError] = useState(false)
     const [passwordErrorRepeat, setPasswordErrorRepeat] = useState(false)
     const [passComparacion, setPassComparacion] = useState(false)
+    const [imagenPerfil, setImagenPerfil] = useState(false)
+    const [file, setFile] = useState(null)
 
     
 
@@ -44,6 +46,9 @@ export default function Registro() {
     }
     function fechaNacimientoErrorFuncion() {
         setFechaNacimientoError(false)
+    }
+    function imagenPerfilError(){
+        setImagenPerfil(false)
     }
     function passError() {
         setPasswordError(false)
@@ -74,7 +79,18 @@ export default function Registro() {
             [name]: value,
         }
         setValues(newValues)
-    }
+
+        if(e.target.name === "foto") {
+            const file = e.target.files ? e.target.files[0] : null
+            // console.log("file--->>> ", file)
+            setValues({ ...values, [e.target.name]: file});
+            setFile("")
+        }
+        else {
+            setValues({...values, [e.target.name]: e.target.value });
+        }
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -114,6 +130,10 @@ export default function Registro() {
             setFechaNacimientoError(true)
             return
         }
+        else if (file === null) {
+            setImagenPerfil(true)
+            return
+        }
         else if (!validPassword.test(values.password)) {
             setPasswordError(true)
             return
@@ -130,10 +150,18 @@ export default function Registro() {
 
 
         console.log("URL--->>", URL)
+
+        const formData = new FormData();
+        for(const [key, value] of Object.entries(values)) {
+            formData.append(key, value)
+        }
+
+        console.log("formData ", formData)
+
         fetch(`${URL}/registro-usuario`, {
             method: 'POST',
-            headers: { "Content-Type": "application/json", 'Accept': 'application/json' },
-            body: JSON.stringify(values),
+            //headers: { "Content-Type": "application/json", 'Accept': 'application/json' },
+            body: formData
         })
             .then(response => {
                 if (response.status === 200) {
@@ -166,7 +194,7 @@ export default function Registro() {
     return (
 
         <div className='formulario'>
-            <form className='form1' onSubmit={handleSubmit} >
+            <form onSubmit={handleSubmit} enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="numeroId">Documento</label>
                     <input type="number" class="form-control" id="inputNumero" name='identificacion' onChange={handleChange} onClick={idError} placeholder="Debe estar entre 5 y 10 dígitos" />
@@ -201,6 +229,13 @@ export default function Registro() {
                     <label for="fecha">Fecha de Nacimiento</label>
                     <input type="date" class="form-control" id="inputFecha" name='fechaNacimiento' onChange={handleChange} onClick={fechaNacimientoErrorFuncion} placeholder="Fecha de Nacimiento" />
                     {fechaNacimientoError ? <p>Debe ser una fecha valida</p> : ""}
+                </div>
+                <div class="form-group">
+                    <label className='form-label' htmlFor='form3Example3cg'>
+                        Seleccione Imagen de perfil
+                    </label> <br />
+                    <input type='file' name='foto' accept='.jpg, .jpeg, .png, .gif, .jfif' onChange={handleChange} onClick={imagenPerfilError}/>
+                    {imagenPerfil ? (<p>Debe seleccionar una imagen de perfil </p>):("")}
                 </div>
                 <div class="form-group">
                     <label for="password">Contraseña</label>

@@ -67,5 +67,20 @@
         "estado": "activo",
         "rol": "Usuario",
         "fechaCreacion": "2024-04-30T21:31:54.389Z"
+    },
+    {
+        "id": 6,
+        "identificacion": "1265452549",
+        "nombres": "jotge",
+        "apellidos": "muñoz",
+        "email": "jorge3@gmail.com",
+        "direccion": "calle 14 # 15-24",
+        "telefono": "3220156984",
+        "fechaNacimiento": "2005-02-22",
+        "image": "1722284344342",
+        "password": "Jorge123",
+        "estado": "activo",
+        "rol": "Usuario",
+        "fechaCreacion": "2024-07-29T20:19:04.347Z"
     }
 ]
