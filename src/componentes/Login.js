@@ -4,6 +4,7 @@ import Cookies from 'universal-cookie';
 import Swal from 'sweetalert2';
 import './login.css';
 import GoogleAOuth from './googleAOuth/GoogleAOuth';
+import FireBaseAuth from './FireBase/FireBaseAuth';
 
 const LoginUser = () => {
     const cookies = new Cookies();
@@ -116,6 +117,9 @@ const LoginUser = () => {
                                             </form>
                                             <div className="d-flex justify-content-center text-center mt-3 pt-1">
                                                 <GoogleAOuth/>
+                                            </div>
+                                            <div className="d-flex justify-content-center text-center mt-3 pt-1">
+                                                <FireBaseAuth/>
                                             </div>
                                         </div>
                                         <div>
