@@ -1,17 +1,32 @@
-import React from "react";
+import React, { useEffect } from "react";
 import './header.css';
 import HomeIcon from '@mui/icons-material/Home';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
-import AddLinkIcon from '@mui/icons-material/AddLink';
-import AddIcCallIcon from '@mui/icons-material/AddIcCall';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LoginIcon from '@mui/icons-material/Login';
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { dataContext } from "../context/DataContext";
+import Cookies from "universal-cookie";
 
 function Header() {
     const {makeupCarrito, setMakeupCarrito} = useContext(dataContext)
+
+    function whatsapp(){
+        /*const telefono = "3106326454"
+        const mensaje = "Hola. Quiero más información."
+        const url = `https://api.whatsapp.com/send?phone=${telefono}&texto=${encodeURIComponent(mensaje)}`*/
+        const url = `https://wa.link/d44qvb`
+        window.open(url, "_black")
+    }
+
+    /*useEffect(() => {
+        if(Cookies.get("email")){
+            window.location.hash = "/sesion";
+        }
+    });*/
+
     return (
         <div className="contenedor">
             <nav className="navbar navbar-expand-lg">
@@ -28,12 +43,8 @@ function Header() {
                                 <a className="nav-link" href="#"> Tutoriales </a>
                             </li>
                             <li className="nav-item">
-                                <AddLinkIcon/>
-                                <a className="nav-link"> Referencias </a>
-                            </li>
-                            <li className="nav-item">
-                                <AddIcCallIcon/>
-                                <a className="nav-link"> Contacto </a>
+                                <WhatsAppIcon/>
+                                <a className="nav-link" href="#" onClick={whatsapp}> Contacto </a>
                             </li>
                             <Link to='/registro'>
                             <li className="nav-item">
