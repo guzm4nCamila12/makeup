@@ -9,6 +9,7 @@ import DataProvider from './context/DataContext';
 import CarritoVacio from './carrito/CarritoVacio';
 import CarritoElements from './carrito/CarritoElements';
 import CarritoContents from './carrito/CarritoContents';
+import BarraRedesSociales from './Barra_redes_sociales/BarraRedesSociales';
 
 function Router() {
     return (
@@ -22,6 +23,7 @@ function Router() {
                     <Route exact path = '/carrito-vacio' element = {<CarritoVacio/>}/>
                     <Route exact path = '/carrito' element = {<CarritoContents/>}/>
                 </Routes>
+                <BarraRedesSociales/>
             </HashRouter>
         </DataProvider>
     )
